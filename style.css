@@ -1,0 +1,248 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --ff-primary: "Roboto", sans-serif;
+  --text-color: #e1e1e6;
+
+  --primary-color: #06181c;
+  --bg-button: #065e7c;
+}
+
+body {
+  background-color: #000000;
+}
+
+body * {
+  font-family: var(--ff-primary);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+#app {
+  max-width: 112rem;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 8rem 0;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.search input {
+  background-color: var(--primary-color);
+  height: 4.8rem;
+  border: none;
+  border-radius: 5px;
+  padding: 1.6rem;
+
+  width: 46.2rem;
+  color: var(--text-color);
+  font-size: 1.6rem;
+}
+
+.search-bttn {
+  background-color: var(--bg-button);
+  height: 4.8rem;
+  border: none;
+  border-radius: 5px;
+
+  padding: 1.2rem 3.2rem;
+
+  width: 17rem;
+
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.search-bttn:hover,
+.search-bttn:hover svg path {
+  background-color: #ffffff;
+  color: var(--bg-button);
+  fill: var(--bg-button);
+}
+
+/* scroll testes */
+main#root {
+  overflow: auto;
+  max-height: 65vh;
+  height: 55rem;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+
+  border-radius: 0.8rem;
+}
+
+table * {
+  color: var(--text-color);
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+}
+
+table th {
+  text-align: left;
+  background: #092d38;
+  font-weight: 700;
+  font-size: 1.8rem;
+  padding: 2.4rem 4rem;
+}
+
+table th:first-child {
+  border-top-left-radius: 0.8rem;
+}
+
+/* table th:last-child {
+  border-top-right-radius: 0.8rem;
+} */
+
+/* odd - aplica nos impares da lista */
+table tr:nth-child(odd) {
+  background: rgba(6, 22, 27, 0.5);
+}
+
+/* even - aplica nos pares da lista */
+table tr:nth-child(even) {
+  background: #06181c;
+}
+
+table td {
+  padding: 2.4rem 4rem;
+  text-align: left;
+
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 160%;
+}
+
+td.user {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+td.user img {
+  width: 5.6rem;
+  height: 5.6rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 1.6rem;
+}
+
+td.user a {
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+td.user a p {
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+td .remove {
+  background: none;
+  border: none;
+
+  color: #f75a68;
+  font-weight: 700;
+  font-size: 1.6rem;
+
+  cursor: pointer;
+}
+
+.not-favorite {
+  height: 45rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+
+  background: #030b0d;
+  border-bottom-left-radius: 0.8rem;
+  border-bottom-right-radius: 0.8rem;
+}
+
+.hide {
+  display: none;
+}
+
+.not-favorite h1 {
+  font-size: 4rem;
+  line-height: 2.5rem;
+
+  color: #434455;
+
+  font-family: "Roboto Mono", monospace;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 0.8rem;
+  position: absolute;
+  margin: 5px;
+
+  background: #092d38;
+  border-top-right-radius: 0.8rem;
+}
+
+::-webkit-scrollbar-corner {
+  border: none;
+  background: none;
+  width: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a808c;
+  border-radius: 3px;
+  cursor: move;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: #041418;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border: none;
+  margin-top: 69px;
+}
