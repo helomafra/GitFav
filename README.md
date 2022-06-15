@@ -1,7 +1,10 @@
 # GitFav
-Add all your favorite GitHub profiles to this page. 
+Liste todos os seus usuários favoritos nesta página! 
 
-🚀 Tecnologias: 
+
+
+
+## 🚀 Tecnologias: 
 Esse projeto foi desenvolvido utilizando HTML, CSS e JavaScript
 
 Utilizado para praticar no JS: 
@@ -11,3 +14,9 @@ Utilizado para praticar no JS:
 - Classes;
 - API;
 - Utilização do localStorage.
+
+
+
+
+
+![App Screenshot](https://i.imgur.com/WUj1awr.png)
