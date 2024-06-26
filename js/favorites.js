@@ -1,107 +1,107 @@
-import { GithubUser } from "./githubUser.js";
+import { GithubUser } from "./githubUser.js"
 
 export class Favorites {
   constructor(root) {
-    this.root = document.querySelector(root);
+    this.root = document.querySelector(root)
 
-    this.tbody = this.root.querySelector("table tbody");
+    this.tbody = this.root.querySelector("table tbody")
 
-    this.load();
+    this.load()
   }
 
   load() {
     //JSON.parse serve para modificar um json para o objeto q está dentro do json
-    this.entries = JSON.parse(localStorage.getItem("@github-favorites:")) || [];
+    this.entries = JSON.parse(localStorage.getItem("@github-favorites:")) || []
   }
 
   save() {
     //transforma o this.entries em uma string para depois salvar no localstorage
-    localStorage.setItem("@github-favorites:", JSON.stringify(this.entries));
-    this.noneFavorite();
+    localStorage.setItem("@github-favorites:", JSON.stringify(this.entries))
+    this.noneFavorite()
   }
 
   async add(username) {
     try {
-      const userExists = this.entries.find((entry) => entry.login === username);
+      const userExists = this.entries.find((entry) => entry.login === username)
 
       if (userExists) {
-        throw new Error("Usuário já cadastrado");
+        throw new Error("User already registered!")
       }
 
-      const user = await GithubUser.search(username);
+      const user = await GithubUser.search(username)
 
       if (user.login === undefined) {
-        throw new Error("Usuário não encontrado!");
+        throw new Error("User not found!")
       }
 
       //vai puxar o novo usuário pesquisado, e enviar os usuários ja existentes para baixo, em um novo array para manter a imutabilidade - nao posso usar um push!
-      this.entries = [user, ...this.entries];
-      this.update();
-      this.save();
+      this.entries = [user, ...this.entries]
+      this.update()
+      this.save()
     } catch (error) {
-      alert(error.message);
+      alert(error.message)
     }
   }
 
   delete(user) {
     const filteredEntries = this.entries.filter(
       (entry) => entry.login !== user.login
-    );
+    )
 
-    this.entries = filteredEntries;
-    this.update();
-    this.save();
+    this.entries = filteredEntries
+    this.update()
+    this.save()
   }
 }
 
 export class FavoritesView extends Favorites {
   constructor(root) {
-    super(root);
+    super(root)
 
-    this.update();
-    this.onadd();
-    this.noneFavorite();
+    this.update()
+    this.onadd()
+    this.noneFavorite()
   }
 
   onadd() {
     //serve para pegar o valor que está dentro do input
-    const addButton = this.root.querySelector(".search button");
+    const addButton = this.root.querySelector(".search button")
     addButton.onclick = () => {
-      const { value } = this.root.querySelector(".search input");
+      const { value } = this.root.querySelector(".search input")
 
-      this.add(value);
-    };
+      this.add(value)
+    }
   }
 
   update() {
-    this.removeAllTr();
+    this.removeAllTr()
 
     this.entries.forEach((user) => {
-      const row = this.createRow();
+      const row = this.createRow()
 
       row.querySelector(
         ".user img"
-      ).src = `https://github.com/${user.login}.png`;
-      row.querySelector(".user img").alt = `Imagem de ${user.name}`;
-      row.querySelector(".user a").href = `https://github.com/${user.login}`;
-      row.querySelector(".user p").textContent = user.name;
-      row.querySelector(".user span").textContent = user.login;
-      row.querySelector(".repositories").textContent = user.public_repos;
-      row.querySelector(".followers").textContent = user.followers;
+      ).src = `https://github.com/${user.login}.png`
+      row.querySelector(".user img").alt = `Imagem de ${user.name}`
+      row.querySelector(".user a").href = `https://github.com/${user.login}`
+      row.querySelector(".user p").textContent = user.name
+      row.querySelector(".user span").textContent = user.login
+      row.querySelector(".repositories").textContent = user.public_repos
+      row.querySelector(".followers").textContent = user.followers
 
       row.querySelector(".remove").onclick = () => {
-        const isOK = confirm("Tem certeza que deseja deletar essa linha?");
+        const isOK = confirm("Are you sure you want to delete this line?")
         if (isOK) {
-          this.delete(user);
+          this.delete(user)
         }
-      };
+      }
 
-      this.tbody.append(row);
-    });
+      this.tbody.append(row)
+    })
   }
 
   createRow() {
-    const tr = document.createElement("tr");
+    const tr = document.createElement("tr")
 
     tr.innerHTML = `   
     <td class="user">
@@ -120,22 +120,22 @@ export class FavoritesView extends Favorites {
     <td >
       <button class="remove">Remover</button>
     </td>
-    `;
+    `
 
-    return tr;
+    return tr
   }
 
   noneFavorite() {
     if (this.entries <= 0) {
-      this.root.querySelector(".not-favorite").classList.remove("hide");
+      this.root.querySelector(".not-favorite").classList.remove("hide")
     } else {
-      this.root.querySelector(".not-favorite").classList.add("hide");
+      this.root.querySelector(".not-favorite").classList.add("hide")
     }
   }
 
   removeAllTr() {
     this.tbody.querySelectorAll("tr").forEach((tr) => {
-      tr.remove();
-    });
+      tr.remove()
+    })
   }
 }
