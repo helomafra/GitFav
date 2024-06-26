@@ -4,7 +4,7 @@ List all your favorite users on this page!
 
 
 ## 🚀 Tecnologias: 
-Esse projeto foi desenvolvido utilizando HTML, CSS e JavaScript
+This project was developed using HTML, CSS, and JavaScript.
 
 Used to practice in JS:
 
