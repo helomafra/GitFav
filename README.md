@@ -1,19 +1,18 @@
 # GitFav
-Liste todos os seus usuários favoritos nesta página! 
-
+List all your favorite users on this page!
 
 
 
 ## 🚀 Tecnologias: 
 Esse projeto foi desenvolvido utilizando HTML, CSS e JavaScript
 
-Utilizado para praticar no JS: 
+Used to practice in JS:
 
-- Assínismo e promises;
-- Orientação a objetos;
+- Asynchronous and promises;
+- Object-oriented programming;
 - Classes;
 - API;
-- Utilização do localStorage.
+- Use of localStorage.
 
 
 
